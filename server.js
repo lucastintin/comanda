@@ -23,6 +23,10 @@ app.get('/teste', (req, res) => {
 });
 
 //Rotas Cliente
+app.get('/cliente', (req, res) => {
+    res.render();
+});
+
 app.post('/cliente/add', (req, res) => {
 
     let cliente = new Cliente({
@@ -41,9 +45,9 @@ app.post('/cliente/add', (req, res) => {
 });
 
 app.get('/cliente/list', (req, res) => {
-    Cliente.find().then((todos) => {
-        res.send(todos);
-    }, (e) =>{
+    Cliente.find().then((clientes) => {
+        res.send(clientes);
+    }, (erro) =>{
         res.status(400).send(erro);
     });
 });
