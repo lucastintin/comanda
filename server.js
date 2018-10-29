@@ -8,39 +8,41 @@ var app = express();
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended: true}))
 
+
 //Modelos do Sistema
-var {Pedido}    = require('./models/pedido');
-var {Usuario}   = require('./models/usuario');
-var Utils       = require('./utils/utils');
+var {Pedido}    = require('./models/pedido.model');
+var {Cliente}   = require('./models/cliente.model');
+var {Utils}     = require('./utils/utils');
 
 app.get('/', (req, res) => {
     res.send('Ola Mundo');
 })
 
-//Rotas Usuario
-app.post('/usuario/add', (req, res) => {
+//Rotas Cliente
+app.post('/cliente/add', (req, res) => {
 
     //Mover para uma rota POST de adicionar
-    const usuario = new Usuario({
+    const cliente = new Cliente({
         nome: req.body.nome,
         telefone: req.body.telefone
     });
 
-    usuario.save()
-    .then((usuario) => {
-        console.log(`Usuario ${usuario} gravado com sucesso.`);
+    cliente.save()
+    .then((cliente) => {
+        Utils.gravarLog(`Cliente: ${cliente}. Gravado com sucesso.`);
     })
     .catch((err) => {
         res.send().status(400);
     });
 });
 
-app.get('/usuario/list', (req, res) => {
-    res.send(Usuario.find());
+app.get('/cliente/list', (req, res) => {
+    res.send(Cliente.find());
 });
 
 //Rotas Pedido
 
+//Sevidor
 app.listen(config.PORT, () => {
-    console.log(`Servidor rodando na porta ${config.PORT}`);
+    Utils.gravarLog(`Servidor rodando na porta ${config.PORT}`);
 })
