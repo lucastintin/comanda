@@ -2,12 +2,10 @@ const {mongoose} = require('../db/db');
 
 var clienteSchema = new mongoose.Schema({
     nome: {
-        type: String, 
-        required: true
+        type: String
     }, 
     telefone: {
-        type: String, 
-        required: true
+        type: String
     }, 
     isRedlist:{
         type: Boolean,

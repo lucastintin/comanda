@@ -6,8 +6,8 @@ const config  = require('./config/config');
 
 var app = express();
 app.use(express.static('public'));
-app.use(bodyParser.urlencoded({extended: true}))
-
+app.use(bodyParser.json());
+//app.use(bodyParser.urlencoded({extended: true}));
 
 //Modelos do Sistema
 var {Pedido}    = require('./models/pedido.model');
@@ -16,28 +16,36 @@ var {Utils}     = require('./utils/utils');
 
 app.get('/', (req, res) => {
     res.send('Ola Mundo');
-})
+});
+
+app.get('/teste', (req, res) => {
+    res.send('Ola Mundo');
+});
 
 //Rotas Cliente
 app.post('/cliente/add', (req, res) => {
 
-    //Mover para uma rota POST de adicionar
-    const cliente = new Cliente({
-        nome: req.body.nome,
-        telefone: req.body.telefone
-    });
+    let cliente = new Cliente({
+        nome: "Lucas Amiune2", //req.body.nome,
+        telefone: "2199394-9392" //req.body.telefone
+    }); 
 
     cliente.save()
     .then((cliente) => {
         Utils.gravarLog(`Cliente: ${cliente}. Gravado com sucesso.`);
+        res.status(200).send();
     })
-    .catch((err) => {
-        res.send().status(400);
+    .catch((erro) => {
+        res.status(400).send(erro);
     });
 });
 
 app.get('/cliente/list', (req, res) => {
-    res.send(Cliente.find());
+    Cliente.find().then((todos) => {
+        res.send(todos);
+    }, (e) =>{
+        res.status(400).send(erro);
+    });
 });
 
 //Rotas Pedido
