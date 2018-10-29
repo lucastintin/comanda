@@ -2,17 +2,17 @@ const {mongoose} = require('../db/db');
 
 var pedidoSchema = new mongoose.Schema({
     comanda :{
-        type: Number,
-        required: true
+        type: Number
     }, 
     item: {
-        type: Number, 
-        required: true
+        type: String
     },
     qtd: {
         type: Number,
-        default: 1,
-        required: true,
+        default: 1
+    },
+    matFuncionario: {
+        type: Number
     },
     isClosed: {
         type: Boolean, 
