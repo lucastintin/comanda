@@ -23,15 +23,15 @@ app.get('/teste', (req, res) => {
 });
 
 //Rotas Cliente
-app.get('/cliente', (req, res) => {
+app.get('/cliente/', (req, res) => {
     res.render('./cliente/index.ejs');
 });
 
 app.post('/cliente/add', (req, res) => {
 
     let cliente = new Cliente({
-        nome: "Lucas Amiune2", //req.body.nome,
-        telefone: "2199394-9392" //req.body.telefone
+        nome: req.body.nome,
+        telefone: req.body.telefone
     }); 
 
     cliente.save()
