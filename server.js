@@ -7,7 +7,8 @@ const config  = require('./config/config');
 var app = express();
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 
 //Modelos do Sistema
 var {Pedido}    = require('./models/pedido.model');
@@ -37,7 +38,7 @@ app.post('/cliente/add', (req, res) => {
     cliente.save()
     .then((cliente) => {
         Utils.gravarLog(`Cliente: ${cliente}. Gravado com sucesso.`);
-        res.status(200).send();
+        res.status(200).redirect('/cliente/');
     })
     .catch((erro) => {
         res.status(400).send(erro);
