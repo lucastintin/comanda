@@ -26,7 +26,7 @@ app.get('/teste', (req, res) => {
 });
 
 //Rotas Cliente
-app.use('/cliente', clienteController);
+app.use('/cliente', clienteController); 
 
 //Rotas Pedido
 app.use('/pedido', pedidoController);
