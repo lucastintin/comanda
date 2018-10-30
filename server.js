@@ -15,6 +15,9 @@ var {Pedido}    = require('./models/pedido.model');
 var {Cliente}   = require('./models/cliente.model');
 var {Utils}     = require('./utils/utils');
 
+//Controllers
+var pedidoController    = require('./controllers/pedidoController');
+
 app.get('/', (req, res) => {
     res.render('index');
 });
@@ -54,9 +57,10 @@ app.get('/cliente/list', (req, res) => {
 });
 
 //Rotas Pedido
-app.get('/pedido', (req, res) => {
-    res.render('./pedido/index.ejs');
-});
+// app.get('/pedido', (req, res) => {
+//     res.render('./pedido/index.ejs');
+// });
+app.use('/pedido', pedidoController);
 
 //Sevidor
 app.listen(config.PORT, () => {

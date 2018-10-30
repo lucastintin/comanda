@@ -1,4 +1,4 @@
-const {mongoose} = require('../db/db');
+const {mongoose} = require('./db');
 
 var clienteSchema = new mongoose.Schema({
     nome: {
