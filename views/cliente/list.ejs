@@ -7,6 +7,9 @@
     <header>
         <% include ./../partials/header %>
     </header>
+    <% if (mensagem && mensagem) { %>
+        <span style="color:green"><%- mensagem.mensagem %></span>
+    <% } %>
     <table class="table table-hover">
         <thead>
             <tr>
@@ -34,8 +37,9 @@
                     </a>
                 </td>
                 <td>
-                    <a href="#">
-                        <span class="glyphicon glyphicon-trash"></span>
+                    <a href="/cliente/delete/<%= clientes[i]._id %>" >
+                        del
+                        <!-- <span class="glyphicon glyphicon-trash"></span>-->
                     </a>
                 </td>
             </tr>

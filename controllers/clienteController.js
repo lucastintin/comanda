@@ -40,4 +40,21 @@ router.get('/list', (req, res) => {
     });
 });
 
+router.get('/edit/:id', (req, res) =>{
+    Cliente.findById(req.params.id, (err, cliente) => {
+        if(!err) {
+            res.render('./cliente/edit', {cliente});
+        }
+    })
+});
+
+router.get('/delete/:id', (req, res) => {
+    Cliente.findByIdAndRemove(req.params.id, (err, cliente) => {
+        if(!err){
+            Utils.gravarLog(`Cliente: ${cliente}. Deletado com sucesso.`);
+            res.redirect('./../../cliente/list');
+        }
+    })
+});
+
 module.exports = router;
