@@ -10,6 +10,7 @@
     <table class="table table-hover">
         <thead>
             <tr>
+                <td></td>
                 <td scope="col">Nome</td>
                 <td scope="col">Telefone</td>
                 <td></td>
@@ -19,6 +20,7 @@
         </thead>
         <% for (var i = 0; i < clientes.length;  i++) { %>
             <tr>
+                <td><%= i+1 %></td>
                 <td><%= clientes[i].nome %></td>
                 <td><%= clientes[i].telefone %></td>
                 <td>
