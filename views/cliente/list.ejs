@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <% include ./../partials/head %>
+</head>
+<body>
+    <header>
+        <% include ./../partials/header %>
+    </header>
+    <table>
+        <tr>
+            <thead>Nome</thead>
+            <thead>Telefone</thead>
+        </tr>
+        <% for (var i = 0; i < clientes.length;  i++) { %>
+            <tr>
+                <td><%= clientes[i].nome %></td>
+                <td><%= clientes[i].telefone %></td>
+            </tr>
+        <% } %>
+    </table>
+    <footer>
+        <% include ./../partials/footer %>
+    </footer>
+</body>
+</html>
