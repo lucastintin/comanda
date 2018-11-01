@@ -7,15 +7,35 @@
     <header>
         <% include ./../partials/header %>
     </header>
-    <table class="table table-striped">
-        <tr>
-            <thead>Nome</thead>
-            <thead>Telefone</thead>
-        </tr>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <td scope="col">Nome</td>
+                <td scope="col">Telefone</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </thead>
         <% for (var i = 0; i < clientes.length;  i++) { %>
             <tr>
                 <td><%= clientes[i].nome %></td>
                 <td><%= clientes[i].telefone %></td>
+                <td>
+                    <a href="#">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </a>
+                </td>
+                <td>
+                    <a href="#">
+                        <span class="glyphicon glyphicon-flag"></span>
+                    </a>
+                </td>
+                <td>
+                    <a href="#">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </a>
+                </td>
             </tr>
         <% } %>
     </table>

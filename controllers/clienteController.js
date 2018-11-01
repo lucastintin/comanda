@@ -24,6 +24,7 @@ router.post('/', (req, res) => {
             res.redirect('./cliente/list');
         }
     })
+    //DEPRECATED
     // var gravou = await cliente.save();
     // if (gravou) {
     //     Utils.gravarLog(`Cliente: ${cliente}. Gravado com sucesso.`);
@@ -32,9 +33,9 @@ router.post('/', (req, res) => {
 });
 
 router.get('/list', (req, res) => {
-    Cliente.find((err, doc) =>{
+    Cliente.find((err, clientes) =>{
         if(!err) {
-            res.render('./cliente/list', { clientes: doc });
+            res.render('./cliente/list', { clientes });
         }
     });
 });
