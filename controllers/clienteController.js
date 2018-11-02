@@ -24,12 +24,6 @@ router.post('/', (req, res) => {
             res.redirect('./cliente/list');
         }
     })
-    //DEPRECATED
-    // var gravou = await cliente.save();
-    // if (gravou) {
-    //     Utils.gravarLog(`Cliente: ${cliente}. Gravado com sucesso.`);
-    //     res.status(200).redirect('/cliente');
-    // }
 });
 
 router.get('/list', (req, res) => {
@@ -48,9 +42,18 @@ router.get('/edit/:id', (req, res) =>{
     })
 });
 
+router.post('/edit', (req, res) => {
+    Cliente.findByIdAndUpdate(req.body.id, {$set:req.body}, (err, cliente) => {
+        if(!err) {
+            Utils.gravarLog(`Cliente: ${cliente}. Editado com sucesso.`);
+            res.redirect('./../../cliente/list');
+        }
+    })
+});
+
 router.get('/delete/:id', (req, res) => {
     Cliente.findByIdAndRemove(req.params.id, (err, cliente) => {
-        if(!err){
+        if(!err) {
             Utils.gravarLog(`Cliente: ${cliente}. Deletado com sucesso.`);
             res.redirect('./../../cliente/list');
         }

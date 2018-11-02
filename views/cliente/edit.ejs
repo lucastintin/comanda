@@ -7,16 +7,19 @@
     <header>
         <% include ./../partials/header %>
     </header>
-    <form class="form-group" action="/cliente/edit/<%= cliente._id %>" method="post">
+    <form class="form-group" action="/cliente/edit" method="post">
+        <input type="hidden" name="id" value="<%= cliente._id %>" />
         <label>Nome:</label>
         <input class="form-control form-control-lg" type="text" name="nome" value="<%= cliente.nome %>" />
         <br/>
         <label>Telefone:</label>
         <input class="form-control form-control-lg" type="text" name="telefone" value="<%= cliente.telefone %>" />
         <br/>
+        <!-- RedList ainda não implementado 
         <label>Lista Vermelha:</label>
         <input class="form-control form-control-lg" type="checkbox" name="isRedList" value="<%= cliente.isRedList %>" />
         <br/>
+        -->
         <input class="btn btn-primary btn-lg" type="submit" value="Editar Cliente" />
         <input class="btn btn-secondary btn-lg" type="reset" value="Apagar Dados" />
     </form>

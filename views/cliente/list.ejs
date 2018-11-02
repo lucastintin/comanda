@@ -7,9 +7,7 @@
     <header>
         <% include ./../partials/header %>
     </header>
-    <% if (mensagem && mensagem) { %>
-        <span style="color:green"><%- mensagem.mensagem %></span>
-    <% } %>
+    <!-- Adicionar uma busca por telefone e/ou nome -->
     <table class="table table-hover">
         <thead>
             <tr>
@@ -32,13 +30,14 @@
                     </a>
                 </td>
                 <td>
-                    <a href="#">
-                        <span class="glyphicon glyphicon-flag"></span>
+                    <a href="/cliente/edit/<%= clientes[i]._id %>">
+                        editar
+                        <!--<span class="glyphicon glyphicon-flag"></span>-->
                     </a>
                 </td>
                 <td>
-                    <a href="/cliente/delete/<%= clientes[i]._id %>" >
-                        del
+                    <a href="/cliente/delete/<%= clientes[i]._id %>">
+                        deletar
                         <!-- <span class="glyphicon glyphicon-trash"></span>-->
                     </a>
                 </td>
