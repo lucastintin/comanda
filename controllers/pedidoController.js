@@ -1,4 +1,3 @@
-const moment    = require('moment');
 const express   = require('express');
 var router      = express.Router();
 
@@ -33,13 +32,24 @@ router.get('/list', (req, res) => {
         Pedido.find({ numComanda: req.query.comanda, isClosed: false}, 
             (err, pedidos) => {
                 if(!err) {
-                    res.render('./pedido/list', { pedidos});
+                    res.render('./pedido/list', { pedidos });
                 }
             }
         );
     } else {
         res.render('./pedido/list', { pedidos: null});
     }
+});
+
+router.get('/fechar', (req, res) => {
+    Pedido.updateMany({ numComanda: req.query.comanda, isClosed: false}, 
+        { $set: { isClosed: true } },
+        (err, pedidos) => {
+            if(!err){
+                res.redirect(`/cliente/fechar?comanda=${req.query.comanda}`);
+            }
+        }
+    );    
 });
 
 

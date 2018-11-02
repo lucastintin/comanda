@@ -8,7 +8,7 @@
         <% include ./../partials/header %>
     </header>
     <% if (mensagem) { %>
-        <div class="alert alert-success"><%= mensagem %></div>
+        <div class="alert alert-success" role="alert"><%= mensagem %></div>
     <% } %> 
     <div class="container">
         <form action="/pedido" method="post">

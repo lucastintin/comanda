@@ -25,6 +25,11 @@ app.get('/teste', (req, res) => {
     res.send('Ola Mundo');
 });
 
+app.get('/sucess', (req, res) => {
+    let mensagem = req.query.mensagem;
+    res.render('sucess', {mensagem } );
+});
+
 //Rotas Cliente
 app.use('/cliente', clienteController); 
 

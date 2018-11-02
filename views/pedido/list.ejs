@@ -31,7 +31,7 @@
                     <h1>Comanda: <span><%= pedidos[0].numComanda %></span></h1>
                 </div>
                 <div class="col">
-                    <span><a href="#" class="btn btn-secondary">Fechar Pedido</a></span>
+                    <span><a href="/pedido/fechar?comanda=<%= pedidos[0].numComanda %>"" class="btn btn-secondary">Fechar Pedido</a></span>
                 </div>
             </div>
             <div class="row">
@@ -54,7 +54,7 @@
                     </tbody>
                 </table>
                 <div class="col">
-                    <span><a href="#" class="btn btn-secondary">Fechar Pedido</a></span>
+                    <span><a href="/pedido/fechar?comanda=<%= pedidos[0].numComanda %>" class="btn btn-secondary">Fechar Pedido</a></span>
                 </div>
             </div>
         </div>

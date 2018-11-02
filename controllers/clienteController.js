@@ -71,4 +71,16 @@ router.get('/delete/:id', (req, res) => {
     })
 });
 
+router.get('/fechar', (req, res) =>{
+    Cliente.findOneAndUpdate({ numComanda: req.query.comanda},
+        { $set: { numComanda: null } },
+        (err, cliente) => {
+            if (!err) {
+                let mensagem = `A Comanda ${req.query.comanda} do cliente ${cliente.nome} foi encerrada com sucesso.`;
+                res.redirect(`/sucess?mensagem=${mensagem}`);
+            }
+        }
+    );
+});
+
 module.exports = router;
