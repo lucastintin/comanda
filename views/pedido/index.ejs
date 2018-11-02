@@ -7,30 +7,35 @@
     <header>
         <% include ./../partials/header %>
     </header>
-    <form action="/pedido/add" method="post">
-        <div class="row">
-            <div class="col">
-                <label>Comanda:</label>
-                <input class="form-control form-control-lg" type="text" placeholder="999" name="comanda">
+    <% if (mensagem) { %>
+        <div class="alert alert-success"><%= mensagem %></div>
+    <% } %> 
+    <div class="container">
+        <form action="/pedido" method="post">
+            <div class="row">
+                <div class="col">
+                    <label>Comanda:</label>
+                    <input class="form-control form-control-lg" type="text" placeholder="XXX" name="numComanda">
+                </div>
+                <div class="col">
+                    <label>Mat. Funcionário</label>
+                    <input class="form-control form-control-lg" type="text" placeholder="XX" name="matFuncionario">
+                </div>
             </div>
-            <div class="col">
-                <label>Mat. Funcionário</label>
-                <input class="form-control form-control-lg" type="text" placeholder="99" name="matFuncionario">
+            <span>&nbsp;</span>
+            <div class="row">
+                <div class="col-8">
+                    <input class="form-control form-control-lg" type="text" placeholder="Item" name="item">
+                </div>
+                <div class="col">
+                    <input class="form-control form-control-lg" type="text" placeholder="Qtd." name="qtd">
+                </div>
             </div>
-        </div>
-        <span>&nbsp;</span>
-        <div class="row">
-            <div class="col-9">
-                <input class="form-control form-control-lg" type="text" placeholder="Item" name="item">
-            </div>
-            <div class="col">
-                <input class="form-control form-control-lg" type="text" placeholder="Qtd." name="qtd">
-            </div>
-        </div>
-        <br/>
-        <input class="btn btn-primary btn-lg" type="submit" value="Cadastrar Pedido" />
-        <input class="btn btn-secondary btn-lg" type="reset" value="Apagar Dados" />
-    </form>
+            <br/>
+            <input class="btn btn-primary btn-lg" type="submit" value="Cadastrar Pedido" />
+            <input class="btn btn-secondary btn-lg" type="reset" value="Apagar Dados" />
+        </form>
+    </div>
     <footer>
         <% include ./../partials/footer %>
     </footer>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <% include ./../partials/head %>
+    <script type="text/javascript">
+    
+        function gerarLink(){
+            document.getElementById('textbox_id').value
+        }
+
+    </script>
+</head>
+<body>
+    <header>
+        <% include ./../partials/header %>
+    </header>
+    <!-- Adicionar uma busca por telefone e/ou nome -->
+    <div class="container">
+        <div class="row">
+            <form method="GET" action=''>
+                <label>Comanda:</label>
+                <input type="text" placeholder="XX" name="comanda" />
+                <input type="submit" value="Listar Pedidos" class="btn btn-primary"/>
+            </form>
+        </div>        
+        <!-- Apresentando os resultados. -->
+        <% if (pedidos && pedidos.length >=1) { %>
+        <div>
+            <div class="row">
+                <div class="col">
+                    <h1>Comanda: <span><%= pedidos[0].numComanda %></span></h1>
+                </div>
+                <div class="col">
+                    <span><a href="#" class="btn btn-secondary">Fechar Pedido</a></span>
+                </div>
+            </div>
+            <div class="row">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <td scope="col">Item</td>
+                            <td scope="col">Qtd</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for (var i = 0; i < pedidos.length;  i++) { %>
+                            <tr>
+                                <td><%= i+1 %></td>
+                                <td><%= pedidos[i].item %></td>
+                                <td><%= pedidos[i].qtd %></td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+                <div class="col">
+                    <span><a href="#" class="btn btn-secondary">Fechar Pedido</a></span>
+                </div>
+            </div>
+        </div>
+        <% } %>
+    </div>
+    <footer>
+        <% include ./../partials/footer %>
+    </footer>
+</body>
+</html>

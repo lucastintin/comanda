@@ -1,7 +1,7 @@
 const {mongoose} = require('./db');
 
 var pedidoSchema = new mongoose.Schema({
-    comanda :{
+    numComanda :{
         type: Number
     }, 
     item: {

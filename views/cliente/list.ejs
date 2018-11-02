@@ -17,7 +17,6 @@
                 <td scope="col">Comanda</td>
                 <td></td>
                 <td></td>
-                <td></td>
             </tr>
         </thead>
         <% for (var i = 0; i < clientes.length;  i++) { %>
@@ -27,14 +26,9 @@
                 <td><%= clientes[i].telefone %></td>
                 <td><%= clientes[i].numComanda %></td>
                 <td>
-                    <a href="#">
-                        <span class="glyphicon glyphicon-pencil"></span>
-                    </a>
-                </td>
-                <td>
                     <a href="/cliente/edit/<%= clientes[i]._id %>">
                         editar
-                        <!--<span class="glyphicon glyphicon-flag"></span>-->
+                        <!--<span class="glyphicon glyphicon-pencil"></span>-->
                     </a>
                 </td>
                 <td>
