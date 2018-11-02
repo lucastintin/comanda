@@ -8,13 +8,15 @@
         <% include ./../partials/header %>
     </header>
     <!-- Adicionar uma busca por telefone e/ou nome -->
-    <div class="container">
-        <div class="row">
-                <form method="GET" action=''>
-                    <label>Busca:</label>
-                    <input type="text" placeholder="" name="telefone" />
-                    <input type="submit" value="Buscar Cliente" class="btn btn-primary"/>
-                </form>
+    <div class="container mt-2">
+        <div class="row m-2">
+                <div class="col offset-md-4">
+                    <form method="GET" action=''>
+                        <label>Busca:</label>
+                        <input type="text" placeholder="" name="telefone" />
+                        <input type="submit" value="Buscar Cliente" class="btn btn-primary"/>
+                    </form>
+                </div>
         </div>
         <% if (clientes && clientes.length >=1) { %>
         <div class="row">

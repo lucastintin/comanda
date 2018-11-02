@@ -15,22 +15,24 @@
         <% include ./../partials/header %>
     </header>
     <!-- Adicionar uma busca por telefone e/ou nome -->
-    <div class="container">
+    <div class="container mt-2">
         <div class="row">
-            <form method="GET" action=''>
-                <label>Comanda:</label>
-                <input type="text" placeholder="XX" name="comanda" />
-                <input type="submit" value="Listar Pedidos" class="btn btn-primary"/>
-            </form>
+            <div class="col offset-md-4">
+                <form method="GET" action=''>
+                    <label>Comanda:</label>
+                    <input type="text" placeholder="XX" name="comanda" />
+                    <input type="submit" value="Listar Pedidos" class="btn btn-primary"/>
+                </form>
+            </div>
         </div>        
         <!-- Apresentando os resultados. -->
         <% if (pedidos && pedidos.length >=1) { %>
         <div>
-            <div class="row">
+            <div class="row m-2">
                 <div class="col">
                     <h1>Comanda: <span><%= pedidos[0].numComanda %></span></h1>
                 </div>
-                <div class="col">
+                <div class="col d-flex justify-content-end">
                     <span><a href="/pedido/fechar?comanda=<%= pedidos[0].numComanda %>"" class="btn btn-secondary">Fechar Pedido</a></span>
                 </div>
             </div>
