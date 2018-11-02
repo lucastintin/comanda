@@ -12,7 +12,24 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    res.send('bateu');
+    let pedido = new Pedido({
+        comanda: req.body.comanda,
+        matFuncionario: req.body.matFuncionario,
+        item: req.body.item,
+        qtd: req.body.qtd
+    });
+
+    pedido.save((err, pedido) =>{
+        if(!err){
+            Utils.gravarLog(`Pedido ${pedido}. Gravado com sucesso.`);
+            res.redirect('./pedido/list');
+        }
+    });
+});
+
+router.get('/list', (req, res) => {
+    //Tem que ter um filtro por data
+    Pedido.find((err, pedidos))
 });
 
 module.exports = router;

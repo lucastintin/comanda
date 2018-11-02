@@ -15,10 +15,11 @@ router.post('/', (req, res) => {
 
     let cliente = new Cliente({
         nome: req.body.nome,
-        telefone: req.body.telefone
+        telefone: req.body.telefone,
+        numComanda: req. body.numComanda
     });
 
-    cliente.save((err, doc) => {
+    cliente.save((err, cliente) => {
         if(!err){
             Utils.gravarLog(`Cliente: ${cliente}. Gravado com sucesso.`);
             res.redirect('./cliente/list');

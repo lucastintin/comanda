@@ -7,6 +7,10 @@ var clienteSchema = new mongoose.Schema({
     telefone: {
         type: String
     }, 
+    numComanda: {
+        type: String,
+        default: null
+    },
     isRedlist:{
         type: Boolean,
         default: false
