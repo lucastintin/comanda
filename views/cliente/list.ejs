@@ -8,38 +8,51 @@
         <% include ./../partials/header %>
     </header>
     <!-- Adicionar uma busca por telefone e/ou nome -->
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <td></td>
-                <td scope="col">Nome</td>
-                <td scope="col">Telefone</td>
-                <td scope="col">Comanda</td>
-                <td></td>
-                <td></td>
-            </tr>
-        </thead>
-        <% for (var i = 0; i < clientes.length;  i++) { %>
-            <tr>
-                <td><%= i+1 %></td>
-                <td><%= clientes[i].nome %></td>
-                <td><%= clientes[i].telefone %></td>
-                <td><%= clientes[i].numComanda %></td>
-                <td>
-                    <a href="/cliente/edit/<%= clientes[i]._id %>">
-                        editar
-                        <!--<span class="glyphicon glyphicon-pencil"></span>-->
-                    </a>
-                </td>
-                <td>
-                    <a href="/cliente/delete/<%= clientes[i]._id %>">
-                        deletar
-                        <!-- <span class="glyphicon glyphicon-trash"></span>-->
-                    </a>
-                </td>
-            </tr>
+    <div class="container">
+        <div class="row">
+                <form method="GET" action=''>
+                    <label>Busca:</label>
+                    <input type="text" placeholder="" name="telefone" />
+                    <input type="submit" value="Buscar Cliente" class="btn btn-primary"/>
+                </form>
+        </div>
+        <% if (clientes && clientes.length >=1) { %>
+        <div class="row">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td scope="col">Nome</td>
+                        <td scope="col">Telefone</td>
+                        <td scope="col">Comanda</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <% for (var i = 0; i < clientes.length;  i++) { %>
+                <tr>
+                    <td><%= i+1 %></td>
+                    <td><%= clientes[i].nome %></td>
+                    <td><%= clientes[i].telefone %></td>
+                    <td><%= clientes[i].numComanda %></td>
+                    <td>
+                        <a href="/cliente/edit/<%= clientes[i]._id %>">
+                            editar
+                            <!--<span class="glyphicon glyphicon-pencil"></span>-->
+                        </a>
+                    </td>
+                    <td>
+                        <a href="/cliente/delete/<%= clientes[i]._id %>"></a>
+                            deletar
+                            <!-- <span class="glyphicon glyphicon-trash"></span>-->
+                        </a>
+                    </td>
+                </tr>
+                <% } %>
+            </table>
+        </div>
         <% } %>
-    </table>
+    </div>
     <footer>
         <% include ./../partials/footer %>
     </footer>

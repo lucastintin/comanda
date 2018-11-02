@@ -28,11 +28,21 @@ router.post('/', (req, res) => {
 });
 
 router.get('/list', (req, res) => {
-    Cliente.find((err, clientes) =>{
-        if(!err) {
-            res.render('./cliente/list', { clientes });
-        }
-    });
+    if (req.query.telefone) {
+        Cliente.find({ telefone: req.query.telefone}, 
+            (err, clientes) => {
+                if(!err) {
+                    res.render('./cliente/list', { clientes});
+                }
+            }
+        );
+    } else {
+        Cliente.find((err, clientes) =>{
+            if(!err) {
+                res.render('./cliente/list', { clientes });
+            }
+        });
+    }
 });
 
 router.get('/edit/:id', (req, res) =>{
