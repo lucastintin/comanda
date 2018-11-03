@@ -2,13 +2,6 @@
 <html>
 <head>
     <% include ./../partials/head %>
-    <script type="text/javascript">
-    
-        function gerarLink(){
-            document.getElementById('textbox_id').value
-        }
-
-    </script>
 </head>
 <body>
     <header>
@@ -26,7 +19,7 @@
             </div>
         </div>        
         <!-- Apresentando os resultados. -->
-        <% if (pedidos && pedidos.length >=1) { %>
+        <% if (pedidos && pedidos.length >=1 && detalhe == 1 ) { %>
         <div>
             <div class="row m-2">
                 <div class="col">
@@ -60,8 +53,30 @@
                 </div>
             </div>
         </div>
-        <% } %>
-    </div>
+        <% } else { %>
+            <div>
+                <div class="row m-2">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <td scope="col">Comanda</td>
+                                <!--<td scope="col">Data da Abertura da Comanda</td>-->
+                                <td scope="col">Detalhes</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for (var i = 0; i < pedidos.length;  i++) { %>
+                                <tr>
+                                    <td><%= pedidos[i] %></td>
+                                    <!--<td><%= pedidos[i].createdAt %></td>-->
+                                    <td><a href="/pedido/list?comanda=<%= pedidos[i] %>">ver</a></td>
+                                </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <% } %>
     <footer>
         <% include ./../partials/footer %>
     </footer>

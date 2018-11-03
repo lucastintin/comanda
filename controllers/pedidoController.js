@@ -32,12 +32,19 @@ router.get('/list', (req, res) => {
         Pedido.find({ numComanda: req.query.comanda, isClosed: false}, 
             (err, pedidos) => {
                 if(!err) {
-                    res.render('./pedido/list', { pedidos });
+                    res.render('./pedido/list', { pedidos, detalhe: 1 });
                 }
             }
         );
     } else {
-        res.render('./pedido/list', { pedidos: null});
+        Pedido.distinct('numComanda', { isClosed: false }, 
+            (err, pedidos) => {
+                if(!err) {
+                    res.render('./pedido/list', { pedidos, detalhe: null });
+                }
+            }
+        );
+        //res.render('./pedido/list', { pedidos: null});
     }
 });
 
