@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <% include ./../partials/head %>
+    <script type='text/javascript'>
+        function setDatas(){
+            document.getElementById("dtp_Inicio").valueAsDate = new Date();
+            document.getElementById("dtp_Fim").valueAsDate = new Date();
+        }
+    </script>
+</head>
+<body onload="setDatas()">
+    <header>
+        <% include ./../partials/header %>
+    </header>
+    <div class="container-fluid mt-2">
+        <div class="row m-2">
+                <div class="col offset-md-4">
+                    <form method="GET" action=''>
+                        <label>Início:</label>
+                        <input type="date" placeholder="" name="dtInicio" id="dtp_Inicio" />
+                        <label>Fim:</label>
+                        <input type="date" placeholder="" name="dtFim" id="dtp_Fim"/>
+                        <input type="submit" value="Buscar Período" class="btn btn-primary"/>
+                    </form>
+                </div>
+        </div>
+        <% if (pedidos && pedidos.length >=1) { %>
+        <div class="row">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <td scope="col">Data</td>
+                        <td scope="col">Item</td>
+                        <td scope="col">Qtd</td>
+                    </tr>
+                </thead>
+                <% for (var i = 0; i < pedidos.length;  i++) { %>
+                <tr>
+                    <td><%= pedidos[i].createdAt %></td>
+                    <td><%= pedidos[i].item %></td>
+                    <td><%= pedidos[i].qtd %></td>
+                </tr>
+                <% } %>
+            </table>
+        </div>
+        <% } %>
+    </div>
+    <footer>
+        <% include ./../partials/footer %>
+    </footer>
+</body>
+</html>

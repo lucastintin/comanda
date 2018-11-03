@@ -1,3 +1,4 @@
+const moment    = require('moment');
 const express   = require('express');
 var router      = express.Router();
 
@@ -65,6 +66,38 @@ router.get('/fechar', (req, res) => {
             }
         }
     );    
+});
+
+router.get('/report/fechados', (req, res) => {
+    let startDate;
+    let endDate;
+    if (!req.query.dtInicio){
+        startDate = moment().format('YYYY-MM-DD 00:00:00.000');
+    } else {
+        startDate = moment(req.query.dtInicio).format('YYYY-MM-DD 00:00:00.000');
+    }
+    if (!req.query.dtFim){
+        endDate = moment().format('YYYY-MM-DD 23:59:59.999');;
+    } else {
+        endDate = moment(req.query.dtFim).format('YYYY-MM-DD 23:59:59.999');;
+    }
+    // console.log(startDate);
+    // console.log(endDate);
+
+    Pedido.find({'isClosed': true, 'createdAt': { $gte: startDate, $lt: endDate } }, (err, pedidos) => {
+        if(!err){
+            res.render('./pedido/rel_fechados', { pedidos
+                // pedidos : {
+                // createdAt: moment(doc.createdAt).format('DD-MM-YYYY'),
+                // item: doc.item,
+                // qtd: doc.qtd
+                // }
+            })
+            console.log(pedidos);
+        }
+    });
+
+    
 });
 
 
