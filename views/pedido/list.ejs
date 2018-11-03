@@ -36,6 +36,7 @@
                             <td></td>
                             <td scope="col">Item</td>
                             <td scope="col">Qtd</td>
+                            <td></td>
                         </tr>
                     </thead>
                     <tbody>
@@ -44,6 +45,11 @@
                                 <td><%= i+1 %></td>
                                 <td><%= pedidos[i].item %></td>
                                 <td><%= pedidos[i].qtd %></td>
+                                <td>
+                                    <a href="/pedido/delete/<%= pedidos[i]._id %>">
+                                        deletar
+                                    </a>
+                                </td>
                             </tr>
                         <% } %>
                     </tbody>

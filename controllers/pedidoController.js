@@ -44,8 +44,16 @@ router.get('/list', (req, res) => {
                 }
             }
         );
-        //res.render('./pedido/list', { pedidos: null});
     }
+});
+
+router.get('/delete/:id', (req, res) => {
+    Pedido.findByIdAndRemove(req.params.id, (err, pedido) => {
+        if(!err) {
+            Utils.gravarLog(`Pedido: ${pedido}. Deletado com sucesso.`);
+            res.redirect(`./../../pedido/list?comanda=${pedido.numComanda}`);
+        }
+    })
 });
 
 router.get('/fechar', (req, res) => {
