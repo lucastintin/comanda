@@ -8,13 +8,9 @@
             <% include ./partials/header %>
     </header>
     <div class="container" style="margin:2em">
-        <div class="row">
-            <div class="col">
-                <% if (mensagem) { %>
-                    <span class="alert alert-info"><%= mensagem %></span>
-                <% } %>
-            </div>
-        </div>
+        <% if (mensagem) { %>
+            <div class="alert alert-info"><%= mensagem %></div>
+        <% } %>
     </div>
     <footer>
         <% include ./partials/footer %>

@@ -21,14 +21,14 @@
         <% if (clientes && clientes.length >=1) { %>
         <div class="row">
             <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <td></td>
-                        <td scope="col">Nome</td>
-                        <td scope="col">Telefone</td>
-                        <td scope="col">Comanda</td>
-                        <td></td>
-                        <td></td>
+                <thead> <!-- class="thead-dark" -->
+                    <tr class="table-secondary">
+                        <th></th>
+                        <th>Nome</th>
+                        <th>Telefone</th>
+                        <th>Comanda</th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <% for (var i = 0; i < clientes.length;  i++) { %>
