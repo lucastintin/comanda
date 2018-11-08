@@ -8,7 +8,7 @@ var clienteSchema = new mongoose.Schema({
         type: String
     }, 
     numComanda: {
-        type: String,
+        type: Number,
         default: null
     },
     isRedlist:{

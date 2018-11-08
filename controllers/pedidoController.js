@@ -86,13 +86,7 @@ router.get('/report/fechados', (req, res) => {
 
     Pedido.find({'isClosed': true, 'createdAt': { $gte: startDate, $lt: endDate } }, (err, pedidos) => {
         if(!err){
-            res.render('./pedido/rel_fechados', { pedidos
-                // pedidos : {
-                // createdAt: moment(doc.createdAt).format('DD-MM-YYYY'),
-                // item: doc.item,
-                // qtd: doc.qtd
-                // }
-            })
+            res.render('./pedido/rel_fechados', { pedidos, moment } );
             console.log(pedidos);
         }
     });

@@ -37,7 +37,7 @@
                 </thead>
                 <% for (var i = 0; i < pedidos.length;  i++) { %>
                 <tr>
-                    <td><%= pedidos[i].createdAt %></td>
+                    <td><%= moment(pedidos[i].createdAt).format('DD-MM-YYYY') %></td>
                     <td><%= pedidos[i].item %></td>
                     <td><%= pedidos[i].qtd %></td>
                 </tr>
