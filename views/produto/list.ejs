@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <% include ./../partials/head %>
+</head>
+<body>
+    <header>
+        <% include ./../partials/header %>
+    </header>
+    <div class="container mt-2">
+        <!-- Apresentando os resultados. -->
+        <% if (produtos && produtos.length >=1) { %>
+        <div>
+            <div class="row">
+                <table class="table table-hover">
+                    <thead>
+                        <tr class="table-secondary">
+                            <th></th>
+                            <th>Produto</th>
+                            <th>Qtd</th>
+                            <th>Pç Compra</th>
+                            <th>Pç Venda</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for (var i = 0; i < produtos.length;  i++) { %>
+                            <tr>
+                                <td><%= i+1 %></td>
+                                <td><%= produtos[i].nome %></td>
+                                <td><%= produtos[i].quantidade %></td>
+                                <td><%= produtos[i].precoCompra %></td>
+                                <td><%= produtos[i].precoVenda %></td>
+                                <td>
+                                    <a href="/produto/editar/<%= produtos[i]._id %>">
+                                        editar
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="/produto/delete/<%= produtos[i]._id %>">
+                                        deletar
+                                    </a>
+                                </td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+                <!--
+                <div class="col">
+                    Colocar um botão para ver relatório.
+                </div>
+                -->
+            </div>
+        </div>
+        <% } %>
+    <footer>
+        <% include ./../partials/footer %>
+    </footer>
+</body>
+</html>

@@ -16,6 +16,7 @@ var {Utils}     = require('./utils/utils');
 //Controllers
 var pedidoController    = require('./controllers/pedidoController');
 var clienteController   = require('./controllers/clienteController');
+var produtoController   = require('./controllers/produtoController');
 
 app.get('/', (req, res) => {
     res.render('index');
@@ -35,6 +36,9 @@ app.use('/cliente', clienteController);
 
 //Rotas Pedido
 app.use('/pedido', pedidoController);
+
+//Rotas Pedido
+app.use('/produto', produtoController);
 
 //Sevidor
 app.listen(config.PORT, () => {
