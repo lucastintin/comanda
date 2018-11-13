@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <% include ./../partials/head %>
+</head>
+<body>
+    <header>
+        <% include ./../partials/header %>
+    </header>
+    <div class="container mt-2">
+      <div class="row">
+        <form class="form-group" action="/produto/edit" method="post">
+            <input type="hidden" name="id" value="<%= produto._id %>" />
+            <label>Nome</label>
+            <input class="form-control form-control-lg" type="text" name="nome" value="<%= produto.nome %>" />
+            <br/>
+            <label>Quantidade</label>
+            <input class="form-control form-control-lg" type="text" name="qauntidade" value="<%= produto.quantidade %>" />
+            <br/>
+            <label>Preço Compra:</label>
+            <input class="form-control form-control-lg" type="text" name="precoCompra" value="<%= produto.precoCompra %>" />
+            <br/>
+            <label>Preço Venda:</label>
+            <input class="form-control form-control-lg" type="text" name="precoVenda" value="<%= produto.precoVenda %>" />
+            <br/>
+            <input class="btn btn-primary btn-lg" type="submit" value="Editar Produto" />
+            <input class="btn btn-secondary btn-lg" type="reset" value="Apagar Dados" />
+        </form>
+      </div>
+    </div>
+    <footer>
+        <% include ./../partials/footer %>
+    </footer>
+</body>
+</html>

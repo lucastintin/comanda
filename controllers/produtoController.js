@@ -35,4 +35,31 @@ router.get('/list', (req, res) => {
   });
 });
 
+router.get('/edit/:id', (req, res) =>{
+  Produto.findById(req.params.id, (err, produto) => {
+      if(!err) {
+          res.render('./produto/edit', {produto});
+      }
+  })
+});
+
+router.post('/edit', (req, res) => {
+  Produto.findByIdAndUpdate(req.body.id, {$set:req.body}, (err, produto) => {
+      if(!err) {
+          Utils.gravarLog(`Produto: ${produto}. Editado com sucesso.`);
+          res.redirect('./../../produto/list');
+      }
+  })
+});
+
+router.get('/delete/:id', (req, res) => {
+  Produto.findByIdAndRemove(req.params.id, (err, produto) => {
+      if(!err) {
+          Utils.gravarLog(`Produto: ${produto.nome}. Deletado com sucesso.`);
+          res.redirect('./../../produto/list');
+      }
+  })
+});
+
+
 module.exports = router;
