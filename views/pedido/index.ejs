@@ -13,36 +13,49 @@
     <div class="container mt-2">
         <form action="/pedido" method="post">
             <div class="row">
-                <div class="col">
-                    <label>Comanda</label>
-                    <input class="form-control form-control-lg" type="text" placeholder="XXX" name="numComanda">
-                </div>
-                <div class="col">
-                    <label>Mat. Funcionário</label>
-                    <input class="form-control form-control-lg" type="text" placeholder="XX" name="matFuncionario">
-                </div>
+                <label>Comanda</label>
+                <input class="form-control form-control-lg" type="text" placeholder="XXX" name="numComanda">
             </div>
-            <span>&nbsp;</span>
+            <!-- 
             <div class="row">
-                <div class="col-6 align-middle mt-4">
-                    <div class="input-group">
-                        <!-- <input class="form-control form-control-lg" type="text" placeholder="Item" name="item"> -->
-                        <div class="input-group-prepend">
-                            <label class="input-group-text" for="inputGroupSelect01">Item</label>
-                        </div>
-                        <select class="custom-select" id="inputGroupSelect01">
-                            <option selected>Selecione...</option>
-                            <% for(var i=0; i < produtos.length; i++) { %>
-                                <option value="<%= produtos[i].nome %>" name="item"><%= produtos[i].nome %></option>
-                            <% } %>
-                        </select>
+                <label>Mat. Funcionário</label>
+                <input class="form-control form-control-lg" type="text" placeholder="XX" name="matFuncionario">
+            </div>
+            -->
+            <br/>
+            <div class="row">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01">Item</label>
                     </div>
-                </div>
-                <div class="col">
-                    <label>Qtd</label>
-                    <input class="form-control form-control-lg" type="text" placeholder="XX" name="qtd">
+                    <select class="custom-select" id="inputGroupSelect01">
+                        <option selected>Selecione...</option>
+                        <% for(var i=0; i < produtos.length; i++) { %>
+                            <option value="<%= produtos[i].nome %>" name="item"><%= produtos[i].nome %></option>
+                        <% } %>
+                    </select>
                 </div>
             </div>
+            <br/>
+            <div class="row">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01">Qtd.</label>
+                    </div>
+                    <select class="custom-select" id="inputGroupSelect01">
+                        <option value="1" name="qtd" selected>1</option>
+                        <option value="2" name="qtd">2</option>
+                        <option value="3" name="qtd">3</option>
+                        <option value="4" name="qtd">4</option>
+                        <option value="5" name="qtd">5</option>
+                        <option value="6" name="qtd">6</option>
+                        <option value="7" name="qtd">7</option>
+                        <option value="8" name="qtd">8</option>
+                        <option value="9" name="qtd">9</option>
+                    </select>
+                </div>
+            </div>
+            <br/>
             <br/>
             <input class="btn btn-primary btn-lg" type="submit" value="Cadastrar Pedido" />
             <input class="btn btn-secondary btn-lg" type="reset" value="Apagar Dados" />

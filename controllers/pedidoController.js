@@ -31,8 +31,9 @@ router.post('/', (req, res) => {
 
     pedido.save((err, pedido) =>{
         if(!err){
-            Utils.gravarLog(`Pedido ${pedido}. Gravado com sucesso.`);
-            res.render('./pedido/index', { mensagem: 'Pedido gravado com sucesso.'});
+            let msg = `Pedido ${pedido.qtd}x ${pedido.item}. Gravado com sucesso.`
+            Utils.gravarLog(msg);
+            res.render('./pedido/index', { mensagem: msg});
         }
     });
 });
