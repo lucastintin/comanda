@@ -14,7 +14,7 @@
         <form action="/pedido" method="post">
             <div class="row">
                 <div class="col">
-                    <label>Comanda:</label>
+                    <label>Comanda</label>
                     <input class="form-control form-control-lg" type="text" placeholder="XXX" name="numComanda">
                 </div>
                 <div class="col">
@@ -24,11 +24,23 @@
             </div>
             <span>&nbsp;</span>
             <div class="row">
-                <div class="col-8">
-                    <input class="form-control form-control-lg" type="text" placeholder="Item" name="item">
+                <div class="col-6 align-middle mt-4">
+                    <div class="input-group">
+                        <!-- <input class="form-control form-control-lg" type="text" placeholder="Item" name="item"> -->
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="inputGroupSelect01">Item</label>
+                        </div>
+                        <select class="custom-select" id="inputGroupSelect01">
+                            <option selected>Selecione...</option>
+                            <% for(var i=0; i < produtos.length; i++) { %>
+                                <option value="<%= produtos[i].nome %>" name="item"><%= produtos[i].nome %></option>
+                            <% } %>
+                        </select>
+                    </div>
                 </div>
                 <div class="col">
-                    <input class="form-control form-control-lg" type="text" placeholder="Qtd." name="qtd">
+                    <label>Qtd</label>
+                    <input class="form-control form-control-lg" type="text" placeholder="XX" name="qtd">
                 </div>
             </div>
             <br/>

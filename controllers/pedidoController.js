@@ -9,7 +9,16 @@ var {Utils}     = require('./../utils/utils');
 var {Pedido}    = require('./../models/pedido.model');
 
 router.get('/', (req, res) => {
-    res.render('./pedido/index', { mensagem : null });
+    var {Produto}    = require('./../models/produto.model');
+
+    Produto.find({}, (err, produtos) => {
+        if (!err){
+            res.render('./pedido/index', { mensagem : null, produtos });
+        } else {
+            console.log('ERRO: Não foi possível carregar a lista de produtos.');
+            res.render('./pedido/index', { mensagem : 'ERRO: Não foi possível carregar a lista de produtos.', produtos: null });
+        }
+    });
 });
 
 router.post('/', (req, res) => {
