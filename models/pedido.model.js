@@ -11,6 +11,9 @@ var pedidoSchema = new mongoose.Schema({
         type: Number,
         default: 1
     },
+    _clienteId: {
+        type: mongoose.Schema.Types.ObjectId
+    },
     matFuncionario: {
         type: Number
     },

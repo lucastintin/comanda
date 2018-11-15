@@ -20,6 +20,7 @@
                             <th>Qtd</th>
                             <th>Pç Compra</th>
                             <th>Pç Venda</th>
+                            <th>Lucro</th>
                             <th></th>
                             <th></th>
                         </tr>
@@ -32,6 +33,7 @@
                                 <td><%= produtos[i].quantidade %></td>
                                 <td><%= produtos[i].precoCompra %></td>
                                 <td><%= produtos[i].precoVenda %></td>
+                                <td><%= (produtos[i].precoVenda - produtos[i].precoCompra) %></td>
                                 <td>
                                     <a href="/produto/edit/<%= produtos[i]._id %>">
                                         editar

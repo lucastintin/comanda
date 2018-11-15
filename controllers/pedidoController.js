@@ -7,7 +7,8 @@ var {Utils}     = require('./../utils/utils');
 
 //Model
 var {Pedido}    = require('./../models/pedido.model');
-var {Produto}    = require('./../models/produto.model');
+var {Produto}   = require('./../models/produto.model');
+var {Cliente}   = require('./../models/cliente.model');
 
 router.get('/', (req, res) => {
     Produto.find({}, (err, produtos) => {
@@ -20,13 +21,26 @@ router.get('/', (req, res) => {
     }).sort({"nome": 1});
 });
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
+
     let pedido = new Pedido({
-        numComanda: req.body.numComanda,
-        matFuncionario: req.body.matFuncionario,
-        item: req.body.item,
-        qtd: req.body.qtd
+        // numComanda: req.body.numComanda,
+        // matFuncionario: req.body.matFuncionario,
+        // item: req.body.item,
+        // qtd: req.body.qtd
     });
+
+    pedido.numComanda       = req.body.numComanda,
+    pedido.matFuncionario   = req.body.matFuncionario,
+    pedido.item             = req.body.item,
+    pedido.qtd              = req.body.qtd
+
+    //Buscar o ID do Cliente pelo num comanda
+    await Cliente.findOne({ numComanda: req.body.numComanda }, (err, cliente) => {
+        if(!err){
+            pedido._clienteId = cliente._id;
+        }
+    }); 
 
     pedido.save((err, pedido) =>{
         if(!err){
@@ -100,14 +114,14 @@ router.get('/report/fechados', (req, res) => {
     // console.log(startDate);
     // console.log(endDate);
 
+    //Tenho que fazer um JOIN com a tabela clientes e apresentar o nome do cliente.
+
     Pedido.find({'isClosed': true, 'createdAt': { $gte: startDate, $lt: endDate } }, (err, pedidos) => {
         if(!err){
             res.render('./pedido/rel_fechados', { pedidos, moment } );
             console.log(pedidos);
         }
     });
-
-    
 });
 
 

@@ -13,25 +13,23 @@
     <div class="container mt-2">
         <form action="/produto" method="post">
             <div class="row">
-                <div class="col">
-                    <label>Produto</label>
-                    <input class="form-control form-control-lg" type="text" placeholder="Produto" name="nome">
-                </div>
-                <div class="col">
-                    <label>Qtd.</label>
-                    <input class="form-control form-control-lg" type="text" placeholder="XX" name="quantidade">
-                </div>
+                <label>Produto</label>
+                <input class="form-control form-control-lg" type="text" placeholder="Produto" name="nome">
             </div>
             <br/>
             <div class="row">
-                <div class="col-8">
+                <label>Qtd.</label>
+                <input class="form-control form-control-lg" type="text" placeholder="XX" name="quantidade">
+            </div>
+            <br/>
+            <div class="row">
                     <label>Preço Compra</label>
                     <input class="form-control form-control-lg" type="text" placeholder="$$$" name="precoCompra">
-                </div>
-                <div class="col">
-                    <label>Preço Venda</label>
-                    <input class="form-control form-control-lg" type="text" placeholder="$$$" name="precoVenda">
-                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <label>Preço Venda</label>
+                <input class="form-control form-control-lg" type="text" placeholder="$$$" name="precoVenda">              
             </div>
             <br/>
             <input class="btn btn-primary btn-lg" type="submit" value="Cadastrar Produto" />
