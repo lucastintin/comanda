@@ -28,10 +28,10 @@
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="inputGroupSelect01">Item</label>
                     </div>
-                    <select class="custom-select" id="inputGroupSelect01">
+                    <select name="item" class="custom-select" id="inputGroupSelect01">
                         <option selected>Selecione...</option>
                         <% for(var i=0; i < produtos.length; i++) { %>
-                            <option value="<%= produtos[i].nome %>" name="item"><%= produtos[i].nome %></option>
+                            <option value="<%= produtos[i].nome %>"><%= produtos[i].nome %></option>
                         <% } %>
                     </select>
                 </div>
@@ -42,16 +42,16 @@
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="inputGroupSelect01">Qtd.</label>
                     </div>
-                    <select class="custom-select" id="inputGroupSelect01">
-                        <option value="1" name="qtd" selected>1</option>
-                        <option value="2" name="qtd">2</option>
-                        <option value="3" name="qtd">3</option>
-                        <option value="4" name="qtd">4</option>
-                        <option value="5" name="qtd">5</option>
-                        <option value="6" name="qtd">6</option>
-                        <option value="7" name="qtd">7</option>
-                        <option value="8" name="qtd">8</option>
-                        <option value="9" name="qtd">9</option>
+                    <select name="qtd" class="custom-select" id="inputGroupSelect01">
+                        <option value="1" selected>1</option>
+                        <option value="2" >2</option>
+                        <option value="3" >3</option>
+                        <option value="4" >4</option>
+                        <option value="5" >5</option>
+                        <option value="6" >6</option>
+                        <option value="7" >7</option>
+                        <option value="8" >8</option>
+                        <option value="9" >9</option>
                     </select>
                 </div>
             </div>

@@ -8,25 +8,28 @@
         <% include ./../partials/header %>
     </header>
     <div class="container mt-2">
-      <div class="row">
         <form class="form-group" action="/produto/edit" method="post">
             <input type="hidden" name="id" value="<%= produto._id %>" />
-            <label>Nome</label>
-            <input class="form-control form-control-lg" type="text" name="nome" value="<%= produto.nome %>" />
-            <br/>
-            <label>Quantidade</label>
-            <input class="form-control form-control-lg" type="text" name="quantidade" value="<%= produto.quantidade %>" />
-            <br/>
-            <label>Preço Compra:</label>
-            <input class="form-control form-control-lg" type="text" name="precoCompra" value="<%= produto.precoCompra %>" />
-            <br/>
-            <label>Preço Venda:</label>
-            <input class="form-control form-control-lg" type="text" name="precoVenda" value="<%= produto.precoVenda %>" />
+            <div class="row">
+                <label>Produto</label>
+                <input class="form-control form-control-lg" type="text" name="nome" value="<%= produto.nome %>" />
+            </div>
+            <div class="row">
+                <label>Qtd.</label>
+                <input class="form-control form-control-lg" type="text" name="quantidade" value="<%= produto.quantidade %>" />
+            </div>
+            <div class="row">
+                <label>Preço Compra</label>
+                <input class="form-control form-control-lg" type="text" name="precoCompra" value="<%= produto.precoCompra %>" />
+            </div>
+            <div class="row">
+                <label>Preço Venda</label>
+                    <input class="form-control form-control-lg" type="text" name="precoVenda" value="<%= produto.precoVenda %>" />
+            </div>
             <br/>
             <input class="btn btn-primary btn-lg" type="submit" value="Editar Produto" />
             <input class="btn btn-secondary btn-lg" type="reset" value="Apagar Dados" />
         </form>
-      </div>
     </div>
     <footer>
         <% include ./../partials/footer %>
