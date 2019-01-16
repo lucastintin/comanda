@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <% include ./../partials/head %>
+</head>
+<body>  
+    <div class="container">
+        <div class="row">
+            <input type="text" id="userId" />
+            <input type="button" value="Gerar QRCode" onclick="gerarQRCode()" />
+        </div>
+        <!--<input type="hidden" id="userId" value="<%= %>" >-->
+        <div class="row">
+            <div id="qrcode"></div>
+        </div>
+    </div>
+    <!-- QRCode Gerador-->
+    <script src="/js/qrcode.min.js"></script>
+    <script>
+        
+        function gerarQRCode() {
+            var userId = document.getElementById("userId").value;
+            document.getElementById('qrcode').innerHTML = "";
+            var jsonQR = {
+                //text: "http://localhost:3000/qrcode/leitor?usuario="+userId,
+                text: userId,
+                width: 256,
+                height: 256,
+                colorDark : "#000000",
+                colorLight : "#ffffff",
+                correctLevel : QRCode.CorrectLevel.H
+            }
+        new QRCode(document.getElementById("qrcode"), jsonQR);
+        }
+    </script>  
+    <!-- QRCode Gerador-->
+    <footer>
+        <% include ./../partials/footer %>
+    </footer>
+</body>
+</html>

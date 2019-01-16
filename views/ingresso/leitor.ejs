@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <% include ./../partials/head %>
+</head>
+<body> 
+    <div class="container">
+        <div class="row">
+            <div id="welcomeDiv" class="alert alert-success" role="alert" style="display:none;">
+                Olá <span id="welcomeUser"></span>, seu check-in foi realizado com sucesso. <br/>
+                Esperamos que você se divirta bastante. Se Joga!
+            </div>
+        </div>
+        <div class="row">
+            <video id="preview"></video>
+        </div>
+    </div>
+    <!-- QRCode Leior -->
+    <script src="/js/instascan.min.js"></script>
+    <script>
+        const scanner = new Instascan.Scanner({
+            video: document.getElementById('preview')
+        });
+
+        scanner.addListener('scan', function(content) {
+            document.getElementById('welcomeUser').innerHTML = content;
+            document.getElementById('welcomeDiv').style.display = "block";
+            console.log('Leitura do QRCode ' + content);
+            //Chamar uma rota - que grave a presenca do Publico - Gere um numero de sorteio.
+            //var win = window.open(content, '_self');
+            //win.focus();
+        });
+
+        Instascan.Camera.getCameras()
+            .then(function (cameras) {
+                if (cameras.length > 0) {
+                    scanner.start(cameras[0]);
+                } else {
+                    console.error('Nenhuma camera encontrada.');
+                }
+            })
+            .catch(function (e) {
+                console.error(e);
+            });
+    </script>
+    <!-- QRCode Leior -->
+    <footer>
+        <% include ./../partials/footer %>
+    </footer>
+</body>
+</html>
