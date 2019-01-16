@@ -35,9 +35,8 @@
         Instascan.Camera.getCameras()
             .then(function (cameras) {
                 if (cameras.length > 0) {
-                    console.log(cameras);
-                    //Abre camera frontal
-                    scanner.start(cameras[1]);
+                    let numCamera = cameras.length - 1;
+                    scanner.start(cameras[numCamera]);
                 } else {
                     console.error('Nenhuma camera encontrada.');
                 }
